@@ -3,6 +3,7 @@ import os
 import random
 from random import randrange, randint, sample
 
+
 # 跑马灯
 def main():
     str = '北京欢迎你......'
@@ -14,6 +15,7 @@ def main():
         temp2 = str[0]
         str = str[1:] + str[0]
 
+
 # 设计一个函数产生指定长度的验证码，验证码由大小写字母和数字构成。
 def generate_code(code_len=4):
     all_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -23,13 +25,16 @@ def generate_code(code_len=4):
         code += all_chars[index]
     return code
 
+
 #<editor-fold desc="折叠后要显示的内容">
+
 
 # 设计一个函数返回给定文件名的后缀名。
 def get_suffix(filename):
     index = filename.rfind('.')
-    suffix = filename[(index+1):]
+    suffix = filename[(index + 1):]
     return suffix
+
 
 def display(balls):
     """
@@ -52,12 +57,29 @@ def random_select():
     selected_balls.sort()
     selected_balls.append(randint(1, 16))
     return selected_balls
+
+
 #</editor-fold>
+
+
+#打印杨辉三角
+def yanghui():
+    num = int(input('请输入行数:'))
+    yh = [[]] * num
+    for row in range(len(yh)):
+        yh[row] = [None] * (row + 1)
+        for col in range(len(yh[row])):
+            if col == 0 or col == row:
+                yh[row][col] = 1
+            else:
+                yh[row][col] = yh[row - 1][col - 1] + yh[row - 1][col]
+
+            print(yh[row][col], end='\t')
+        print()
+
 
 if __name__ == '__main__':
     #main()
     #print(f'验证码:{generate_code()}')
     #print('后缀是: '+get_suffix(r'C:\test.log'))
-     n = int(input('机选几注: '))
-     for _ in range(n):
-        display(random_select())
+    yanghui()
